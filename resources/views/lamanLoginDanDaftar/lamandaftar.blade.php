@@ -8,5 +8,8 @@
 </head>
 <body>
     halaman daftar
+
+    username
+    password
 </body>
 </html>
