@@ -3,9 +3,8 @@
 use App\Models\lamanutama;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\lamanutamaController;
+use App\Http\Controllers\AutentikasiAdminController;
+
 
 
 /*
@@ -28,9 +27,21 @@ use App\Http\Controllers\lamanutamaController;
 //         "baju4" => "baju croptop",
 //     ]);
 // });
-Route::get('/lamanutama', [lamanutamaController::class, 'index']);
-Route::get('/lamanutama/lamancreate', [lamanutamaController::class, 'create']);
-Route::post('/lamanutama', [lamanutamaController::class, 'store']);
-Route::get('/lamanutama/{id}/edit', [lamanutamaController::class, 'edit']);
-Route::put('/lamanutama/{id}', [lamanutamaController::class, 'update']);
-Route::delete('/lamanutama/{id}', [lamanutamaController::class, 'destroy']);
+// Route::get('/lamanutama', [lamanutamaController::class, 'index']);
+// Route::get('/lamanutama/lamancreate', [lamanutamaController::class, 'create']);
+// Route::post('/lamanutama', [lamanutamaController::class, 'store']);
+// Route::get('/lamanutama/{id}/edit', [lamanutamaController::class, 'edit']);
+// Route::put('/lamanutama/{id}', [lamanutamaController::class, 'update']);
+// Route::delete('/lamanutama/{id}', [lamanutamaController::class, 'destroy']);
+
+
+
+
+
+Route::get('/admin/masuk', [AutentikasiAdminController::class, 'showLoginForm']);
+Route::post('/admin/masuk', [AutentikasiAdminController::class, 'masuk']);
+Route::post('/admin/keluar', [AutentikasiAdminController::class, 'keluar']);
+
+Route::get('/admin/beranda', function () {
+    return view('admin.beranda');
+})->middleware('admin')->name('admin.beranda');
