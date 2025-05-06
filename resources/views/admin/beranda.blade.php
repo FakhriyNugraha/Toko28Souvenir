@@ -12,7 +12,7 @@
         <div class="p-6 text-pink-600 text-2xl font-bold border-b">Toko28Souvenir</div>
         <nav class="mt-6">
             <a href="#" class="block py-3 px-6 text-pink-700 hover:bg-pink-100">Beranda</a>
-            <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-pink-100">Produk</a>
+            <a href="/admin/produk" class="block py-3 px-6 text-gray-700 hover:bg-pink-100">Produk</a>
             <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-pink-100">Pesanan</a>
             <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-pink-100">Pembayaran</a>
         </nav>
@@ -20,16 +20,22 @@
 
     <!-- Main Content -->
     <div class="flex-1 flex flex-col w-full">
-        <!-- Topbar and Dashboard Info (Profil, Foto, dan Cards) -->
-        <header class="bg-white flex items-center px-6 py-4 shadow-md space-x-6">
-            <!-- Profil Admin dan Foto -->
-            <img src="{{ asset('images/pas foto.jpg') }}" alt="Admin"
-                 class="w-16 h-16 rounded-full border-2 border-pink-400 object-cover">
-            <div class="flex flex-col">
+        <!-- Topbar -->
+        <header class="bg-white flex justify-between items-center px-6 py-4 shadow-md">
+            <!-- Dashboard Info (Admin Name & Profile) -->
+            <div class="flex items-center">
                 <h1 class="text-xl font-bold text-pink-600">Dashboard Admin</h1>
-                <span class="text-sm font-medium text-gray-700">Admin {{ session('namapengguna') }}</span>
-                <a href="#" class="text-sm text-pink-600 hover:underline">Lihat Profil</a>
             </div>
+            
+            <!-- Admin Foto, Nama, dan Lihat Profil -->
+            <div class="flex items-center space-x-4">
+                <img src="{{ asset('images/pas foto.jpg') }}" alt="Admin" class="w-16 h-16 rounded-full border-2 border-pink-400 object-cover">
+                <div class="flex flex-col">
+                    <span class="text-sm font-medium text-gray-700">Admin {{ session('namapengguna') }}</span>
+                    <a href="#" class="text-sm text-pink-600 hover:underline">Lihat Profil</a>
+                </div>
+            </div>
+            
         </header>
 
         <!-- Dashboard Cards (Jumlah Produk, Total Pesanan, Pembayaran) -->

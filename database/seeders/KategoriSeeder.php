@@ -13,13 +13,13 @@ class KategoriSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('kategori')->insert([
+        DB::table('kategoris')->insert([
             "nama" => "Sendok"
         ]);
-        DB::table('kategori')->insert([
+        DB::table('kategoris')->insert([
             "nama" => "Gelas"
         ]);
-        DB::table('kategori')->insert([
+        DB::table('kategoris')->insert([
             "nama" => "Mangkok"
         ]);
     }
