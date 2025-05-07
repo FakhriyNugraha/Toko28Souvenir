@@ -4,6 +4,7 @@ use App\Models\lamanutama;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AutentikasiAdminController;
 
 
@@ -53,6 +54,13 @@ Route::post('/admin/produk/store', [ProdukController::class, 'store'])->middlewa
 Route::post('/admin/produk/update/{id}', [ProdukController::class, 'update'])->middleware('admin')->name('admin.updateProduk');
 Route::post('/admin/produk/delete/{id}', [ProdukController::class, 'destroy'])->middleware('admin')->name('admin.deleteProduk');
 Route::get('/admin/produk/{id}', [ProdukController::class, 'show'])->middleware('admin')->name('admin.showProduk');
+
+Route::get('/admin/kategori', [KategoriController::class, 'index'])->name('admin.kategori');
+Route::get('/admin/kategori/create', [KategoriController::class, 'create'])->name('admin.create_kategori');
+Route::post('/admin/kategori', [KategoriController::class, 'store'])->name('admin.store_kategori');
+Route::get('/admin/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('admin.edit_kategori');
+Route::put('/admin/kategori/{id}', [KategoriController::class, 'update'])->name('admin.update_kategori');
+Route::delete('/admin/kategori/{id}', [KategoriController::class, 'destroy'])->name('admin.delete_kategori');
 
 
 
