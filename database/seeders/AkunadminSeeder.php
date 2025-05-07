@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash; 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class AkunadminSeeder extends Seeder
@@ -15,7 +16,7 @@ class AkunadminSeeder extends Seeder
     {
         DB::table('akunadmin')->insert([
             "namapengguna" => "admin1",
-            "katasandi" => "12345"
+            "katasandi" => Hash::make("12345") // Enkripsi kata sandi menggunakan Hash::make()
         ]);
     }
 }

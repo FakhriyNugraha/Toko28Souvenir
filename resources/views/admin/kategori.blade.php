@@ -15,7 +15,6 @@
             <a href="{{ route('admin.produk') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100">Produk</a>
             <a href="{{ route('admin.kategori') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100">Kategori</a>
             <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-pink-100">Pesanan</a>
-            <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-pink-100">Pembayaran</a>
         </nav>
     </aside>
 
@@ -30,7 +29,7 @@
                 <img src="{{ asset('images/pas foto.jpg') }}" alt="Admin" class="w-16 h-16 rounded-full border-2 border-pink-400 object-cover">
                 <div class="flex flex-col">
                     <span class="text-sm font-medium text-gray-700">Admin {{ session('namapengguna') }}</span>
-                    <a href="#" class="text-sm text-pink-600 hover:underline">Lihat Profil</a>
+                    <a href="/admin/profil" class="text-sm text-pink-600 hover:underline">Lihat Profil</a>
                 </div>
             </div>
         </header>
