@@ -3,6 +3,7 @@
 use App\Models\lamanutama;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AutentikasiAdminController;
@@ -61,6 +62,10 @@ Route::post('/admin/kategori', [KategoriController::class, 'store'])->name('admi
 Route::get('/admin/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('admin.edit_kategori');
 Route::put('/admin/kategori/{id}', [KategoriController::class, 'update'])->name('admin.update_kategori');
 Route::delete('/admin/kategori/{id}', [KategoriController::class, 'destroy'])->name('admin.delete_kategori');
+
+Route::get('/admin/profil', [AdminController::class, 'profil'])->name('admin.profil');
+Route::get('/admin/profil/edit', [AdminController::class, 'editProfil'])->name('admin.editprofil');
+Route::post('/admin/profil/update', [AdminController::class, 'updateProfil'])->name('admin.updateprofil');
 
 
 
