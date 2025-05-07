@@ -13,6 +13,8 @@
         <nav class="mt-6 space-y-2">
             <a href="{{ route('admin.beranda') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100 rounded-md transition">Beranda</a>
             <a href="{{ route('admin.produk') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100 rounded-md transition">Produk</a>
+            <a href="{{ route('admin.kategori') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100 rounded-md transition">Kategori</a>
+            <a href="#" class="block py-3 px-6 text-pink-700 hover:bg-pink-100 rounded-md transition">Pesanan</a>
         </nav>
     </aside>
 
