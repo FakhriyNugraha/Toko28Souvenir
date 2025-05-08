@@ -69,7 +69,7 @@
         </div>
 
         <!-- Button untuk Tambah Kategori -->
-        <div class="flex justify-end mt-6">
+        <div class="fixed bottom-10 right-10">
             <a href="{{ route('admin.create_kategori') }}" class="bg-pink-600 text-white rounded-full p-4 shadow-lg hover:bg-pink-700 transition duration-300">
                 <span class="text-2xl font-semibold">+</span>
             </a>
