@@ -37,34 +37,13 @@ class AutentikasiPembeliController extends Controller
         return view('pembeli.daftar');
     }
 
-    public function register(Request $request)
-    {
-        $request->validate([
-            'namapengguna' => 'required|unique:pembelis',
-            'katasandi' => 'required|min:6',
-            'foto' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-        ]);
-
-        $fotoPath = null;
-        if ($request->hasFile('foto')) {
-            $fotoPath = $request->file('foto')->store('fotopembeli', 'public');
-        }
-
-        Pembeli::create([
-            'namapengguna' => $request->namapengguna,
-            'katasandi' => Hash::make($request->katasandi),
-            'foto' => $fotoPath
-        ]);
-
-        return redirect()->route('pembeli.login')->with('success', 'Akun berhasil dibuat. Silakan login.');
-    }
-
+    
     public function daftar(Request $request)
 {
     $request->validate([
         'namapengguna' => 'required|unique:pembelis,namapengguna',
         'katasandi' => 'required|min:3',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:16384',
     ]);
 
     $fotoPath = null;
