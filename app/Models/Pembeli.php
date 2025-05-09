@@ -9,7 +9,9 @@ class Pembeli extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['namapengguna', 'katasandi', 'foto'];
+    // Jika nama tabel berbeda dengan nama model, Anda bisa mendeklarasikannya seperti ini:
+    protected $table = 'pembelis';  // Pastikan ini sesuai dengan nama tabel di database
 
-    protected $hidden = ['katasandi'];
+    protected $fillable = ['namapengguna', 'katasandi', 'foto'];
 }
+

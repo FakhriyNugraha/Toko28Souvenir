@@ -12,6 +12,7 @@ use App\Http\Controllers\AutentikasiPembeliController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,20 +70,19 @@ Route::get('/admin/profil', [AdminController::class, 'profil'])->name('admin.pro
 Route::get('/admin/profil/edit', [AdminController::class, 'editProfil'])->name('admin.editprofil');
 Route::post('/admin/profil/update', [AdminController::class, 'updateProfil'])->name('admin.updateprofil');
 
-// Form login & daftar pembeli
 Route::get('/pembeli/masuk', [AutentikasiPembeliController::class, 'showLoginForm'])->name('pembeli.login');
 Route::post('/pembeli/masuk', [AutentikasiPembeliController::class, 'login']);
-// Form pendaftaran pembeli
 Route::get('/pembeli/daftar', [AutentikasiPembeliController::class, 'formDaftar'])->name('pembeli.daftar');
-
-// Proses pendaftaran pembeli
 Route::post('/pembeli/daftar', [AutentikasiPembeliController::class, 'daftar']);
-
-// Logout
 Route::post('/pembeli/keluar', [AutentikasiPembeliController::class, 'logout'])->name('pembeli.logout');
-
-// Halaman dashboard setelah login
 Route::get('/pembeli/beranda', [AutentikasiPembeliController::class, 'index'])->middleware('auth.pembeli');
+Route::get('/pembeli/beranda', [PembeliController::class, 'beranda'])->middleware('auth.pembeli')->name('pembeli.beranda');
+Route::get('/pembeli/profil', [PembeliController::class, 'profil'])->name('pembeli.profil');
+Route::get('/pembeli/profil/edit', [PembeliController::class, 'editProfil'])->name('pembeli.editprofil');
+Route::put('/pembeli/profil/update', [PembeliController::class, 'updateProfil'])->name('pembeli.updateprofil');
+
+
+
 
 
 

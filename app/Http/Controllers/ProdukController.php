@@ -4,22 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\produk;
 
 class ProdukController extends Controller
 {
 
     
-    public function index()
+    public function index(Request $request)
     {
-        // Ambil data produk dari database
-        $produks = DB::table('produks') // pastikan nama tabelnya benar 'produks'
-            ->join('kategoris', 'produks.kategori_id', '=', 'kategoris.id') // pastikan nama tabelnya benar 'kategoris'
-            ->select('produks.id', 'produks.nama_produk', 'produks.jumlah_stok', 'produks.harga', 'kategoris.nama as kategori') // pastikan nama tabel dan kolomnya sesuai
-            ->get();
+        // Ambil query pencarian jika ada
+        $search = $request->input('search');
+        
+        // Ambil data produk dari database, dengan pencarian jika ada
+        $query = DB::table('produks')
+            ->join('kategoris', 'produks.kategori_id', '=', 'kategoris.id')
+            ->select('produks.id', 'produks.nama_produk', 'produks.jumlah_stok', 'produks.harga', 'kategoris.nama as kategori');
 
-        return view('admin.produk', compact('produks')); // pastikan variabel yang dikirim ke view benar
+        // Jika ada input pencarian, filter produk berdasarkan nama_produk
+        if ($search) {
+            $query->where('produks.nama_produk', 'like', '%' . $search . '%');
+        }
+
+        // Ambil data produk sesuai dengan filter atau tanpa filter jika tidak ada pencarian
+        $produks = $query->get();
+
+        return view('admin.produk', compact('produks'));
     }
-
     public function show($id)
     {
         // Ambil data produk berdasarkan ID

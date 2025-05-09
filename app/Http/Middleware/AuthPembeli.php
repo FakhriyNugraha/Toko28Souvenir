@@ -10,10 +10,11 @@ class AuthPembeli
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!Session::has('pembeli_id')) {
-            return redirect()->route('pembeli.login')->withErrors(['invalid' => 'Silakan login terlebih dahulu.']);
+        if (!Session::get('pembeli_id')) {
+            return redirect('/pembeli/masuk');
         }
 
         return $next($request);
     }
+    
 }
