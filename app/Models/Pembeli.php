@@ -12,6 +12,12 @@ class Pembeli extends Model
     // Jika nama tabel berbeda dengan nama model, Anda bisa mendeklarasikannya seperti ini:
     protected $table = 'pembelis';  // Pastikan ini sesuai dengan nama tabel di database
 
-    protected $fillable = ['namapengguna', 'katasandi', 'foto'];
+    protected $fillable = [
+        'namapengguna', 
+        'katasandi',
+        'alamat',
+        'no_hp',
+        'foto'
+    ];
 }
 

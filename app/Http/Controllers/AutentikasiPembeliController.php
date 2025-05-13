@@ -20,16 +20,25 @@ class AutentikasiPembeliController extends Controller
             'namapengguna' => 'required',
             'katasandi' => 'required'
         ]);
-
+    
         $pembeli = Pembeli::where('namapengguna', $request->namapengguna)->first();
-
+    
         if ($pembeli && Hash::check($request->katasandi, $pembeli->katasandi)) {
-            Session::put('pembeli_id', $pembeli->id);
-            Session::put('namapengguna', $pembeli->namapengguna);
-            return redirect('/pembeli/beranda');
+            // Simpan semua data session yang diperlukan
+            $request->session()->put([
+                'pembeli_id' => $pembeli->id,
+                'nama_pembeli' => $pembeli->namapengguna,
+                'pembeli_data' => $pembeli->toArray() // Simpan semua data pembeli
+            ]);
+            
+            // Regenerate session ID untuk keamanan
+            $request->session()->regenerate();
+            
+            return redirect()->route('pembeli.beranda')->with('success', 'Login berhasil');
         }
-
-        return back()->withErrors(['invalid' => 'Nama pengguna atau kata sandi salah']);
+    
+        return back()->withErrors(['invalid' => 'Nama pengguna atau kata sandi salah'])
+                     ->withInput($request->only('namapengguna'));
     }
 
     public function showRegisterForm()

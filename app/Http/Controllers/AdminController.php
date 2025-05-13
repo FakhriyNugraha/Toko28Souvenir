@@ -7,9 +7,52 @@ use App\Models\akunadmin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Models\Produk;
+use App\Models\Transaksi;
+use App\Models\Pembeli;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
+  
+    
+    public function beranda()
+    {
+        // Total produk
+        $jumlah_produk = Produk::count();
+        
+        // Produk dengan stok rendah (kurang dari 5)
+        $produk_stok_rendah = Produk::where('jumlah_stok', '<', 5)->count();
+        
+        // Total transaksi
+        $total_pesanan = Transaksi::count();
+        
+        // Pesanan yang perlu diproses (status 'proses')
+        $pesanan_proses = Transaksi::where('status', 'proses')->count();
+        
+        // Total pendapatan dari transaksi selesai
+        $total_pendapatan = Transaksi::where('status', 'selesai')->sum('total_harga');
+        
+        // Transaksi terakhir
+        $transaksi_terakhir = Transaksi::latest()->first();
+        
+        // 5 transaksi terbaru untuk aktivitas terkini
+        $aktivitas = Transaksi::orderBy('created_at', 'desc')
+                        ->limit(5)
+                        ->get();
+
+        return view('admin.beranda', compact(
+            'jumlah_produk',
+            'produk_stok_rendah',
+            'total_pesanan',
+            'pesanan_proses',
+            'total_pendapatan',
+            'transaksi_terakhir',
+            'aktivitas'
+        ));
+    }
+
+
     // Menampilkan profil admin
     public function profil()
     {
