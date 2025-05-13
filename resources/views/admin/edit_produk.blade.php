@@ -11,10 +11,10 @@
     <aside class="w-64 bg-white shadow-lg h-screen">
         <div class="p-6 text-pink-600 text-2xl font-bold border-b">Toko28Souvenir</div>
         <nav class="mt-6 space-y-2">
-            <a href="{{ route('admin.beranda') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100 rounded-md transition">Beranda</a>
-            <a href="{{ route('admin.produk') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100 rounded-md transition">Produk</a>
-            <a href="{{ route('admin.kategori') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100 rounded-md transition">Kategori</a>
-            <a href="#" class="block py-3 px-6 text-pink-700 hover:bg-pink-100 rounded-md transition">Pesanan</a>
+            <a href="{{ route('admin.beranda') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100">Beranda</a>
+            <a href="{{ route('admin.produk') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100">Produk</a>
+            <a href="{{ route('admin.kategori') }}" class="block py-3 px-6 text-pink-700 hover:bg-pink-100">Kategori</a>
+            <a href="{{ route('admin.pesanan') }}" class="block py-3 px-6 text-gray-700 hover:bg-pink-100">Pesanan</a>
         </nav>
     </aside>
 
